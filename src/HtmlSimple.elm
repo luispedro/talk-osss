@@ -1,4 +1,4 @@
-module HtmlSimple exposing (floatLeftDiv, floatRightDiv, floatClear, textUL, img80, img50, imgw, p, mdToHtml)
+module HtmlSimple exposing (floatLeftDiv, floatRightDiv, floatClear, textUL, img80, img50, imgw, p, mdToHtml, textTable)
 
 import Html exposing (Html)
 import Html.Attributes as HtmlAttr
@@ -50,4 +50,13 @@ markdownOptions =
     , smartypants = False
     }
 mdToHtml = Markdown.toHtmlWith markdownOptions []
+
+textTable : List String -> List (List String) -> Html msg
+textTable headers content =
+    Html.table
+        [HtmlAttr.class "text-table"]
+        [Html.thead [] [Html.tr [] (List.map (Html.th [] << List.singleton << Html.text) headers)]
+        ,Html.tbody [] (List.map (Html.tr [] << List.map (Html.td [] << List.singleton << Html.text)) content)
+        ]
+
 

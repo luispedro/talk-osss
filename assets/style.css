@@ -52,3 +52,21 @@ DIV.thumbnail:hover {
     transform: scale(0.25);
 }
 
+TABLE.text-table {
+    font: sans-serif;
+}
+TABLE.text-table {
+    border-collapse: collapse;
+}
+TABLE.text-table TD {
+    padding: .2em;
+    font-family: sans-serif;
+}
+TABLE.text-table TD.right {
+    text-align: right;
+}
+TABLE.text-table THEAD TR {
+    font-family: sans-serif;
+    border-bottom: 2px solid #7570b3;
+    border-collapse: collapse;
+}

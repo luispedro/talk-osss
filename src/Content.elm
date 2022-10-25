@@ -17,7 +17,8 @@ metadata =
 slides = cookSlides <| List.concat
     [
     intro
-    ,content
+    ,highlevel
+    ,casestudy
     ,summary
     ]
 
@@ -66,15 +67,6 @@ intro =
                     []]
                 ]
             ]
-        ,Html.div
-            [ HtmlAttr.style "text-align" "right"
-            ]
-            [ Html.img [ HtmlAttr.src "/Media/GMGC/c18e6bde-2ba1-4f18-b6fc-294ebdfec07c_starlio_the_earth_made_of_microbes.png"
-                                , HtmlAttr.style "width" "480px"
-                                , HtmlAttr.style "height" "480px"
-                                , HtmlAttr.style "padding-right" "4em" ]
-                []
-            ]
         ]
      ,slideType = Slides.FirstSlideInGroup }
     ]
@@ -91,8 +83,8 @@ textTableR headers tcontent =
         in Html.tbody [] (List.map mkTR tcontent)
         ]
 
-content =
-    [mkSlide "A little about myself"
+highlevel =
+    [mkSlide "A little about myself and my group"
         [HS.img80 "/Media/BDB-Lab_tools_timeline.svg"
         ,HS.textUL
             [ "Computational biologist (working on the microbiome)"
@@ -125,6 +117,7 @@ content =
             ["To generate the figures/statements in a paper"
             ,"Needs to be understandable"
             ,"Design can be minimal"
+            ,"Use of existing tools is encouraged to the maximum extent"
             ,"Basic correctness checks are necessary, but automated checking may not be worthwhile"
             ,"Can be inflexible and brittle"
             ,"Fast enough is good enough (once only run a single number of times in total)"
@@ -140,12 +133,13 @@ content =
 - Automated checking is definitely worthwhile
 - Documentation is important
 - Even small optimizations are often worth it
+- Dependencies bring costs
 """
         ,Html.div [HtmlAttr.style "padding-top" "1em"]
             [HS.p "As a rule of thumb, each level is 5-10x more effort" ]
         ]]
 
-    ,mkIncrementalSlide "Optimizing SemiBin"
+    ,mkIncrementalSlide "Case Study I: Optimizing SemiBin"
         [   [HS.mdToHtml """
 SemiBin is a tool to bin contigs in metagenomics using semi-supervised learning<br/>
 (if you have no clue what that means, it is not important for this talk)."""]
@@ -202,6 +196,61 @@ In total, 10 minutes × 10,000 runs is ~70 days.
 
     ]
 
+casestudy =
+    [mkIncrementalSlide "Case study II: NGLess"
+        [[HS.img50 "/Media/BDB-Lab_tools_timeline.svg"]
+        ,[HS.mdToHtml """
+### Focus on NGLess
+
+Tool to analyze NGS data (e.g. metagenomics) in a reproducible way<br/>
+(also not that terribly important for this presentation)
+"""
+        ],[HS.p "Why did it take so long to mature?"]
+        ]
+    ,mkIncrementalSlide "Make a robust tool requires real-world usage"
+        [[Html.h3 [] [Html.text "A weird crash"]
+        ,HS.floatRightDiv "40%"
+            [HS.imgw "50%" "/Media/19c27ae2-1b72-4186-8857-007e6f61abc2_luispedro_a_femalescientistworkingatacomputersurroundedbypetridishesinpopartstyle.png"
+            ,Html.br [] []
+            ,HS.imgw "50%" "/Media/2fcb3983-8f34-42f6-919b-294f47acf240_luispedro_a_femalescientistworkingatacomputerinpopartstyle.png"
+            ]
+        ,HS.mdToHtml """
+1. A user reported a weird crash
+2. It seemed very trivial use, which we had tested
+3. Turns out that the had a corrupt file (a chunk of zero Bytes in the middle)"""]
+        ,[Html.h3 [] [Html.text "A slight inconsistency"]
+        ,HS.mdToHtml """
+1. The language had a slight inconsistency
+2. It was not a big deal for us internally, but made it complex to teach
+3. We fixed it, but without running a tutorial, we would not have noticed"""
+        ]
+        ,[Html.h3 [] [Html.text "A bug in a dependency"]
+        ,HS.mdToHtml """
+1. A bug in a dependency gave incorrect results
+2. The dependency was open source, so we could fix it there and require the new version
+3. We did not notice the bug until a user reported it"""
+        ]
+        ]
+    ,mkIncrementalSlide "Case study III: Jug"
+        [[HS.img50 "/Media/BDB-Lab_tools_timeline.svg"]
+        ,[HS.mdToHtml """
+### Focus on Jug
+
+- Tool to run workflows in Python
+- Scratch an itch tool
+- Not particularly successful at attracting users/contributors
+- Still very successful at solving my problems
+
+### A couple of derived tools
+
+- [Gridjug](https://github.com/andsor/gridjug)
+- [Jug-schedule](https://pypi.org/project/jug-schedule/)
+
+In an ecosystem, it is hard to tell what is a contribution to any project.
+Contribute _to the ecosystem_!
+
+"""] ]
+    ]
 
 summary =
     [mkSlide "Summary: think of yourself as part of a community"
@@ -212,6 +261,7 @@ summary =
 - Accept small contributions
 - Make small contributions
 - Not all contributions need to be code commits
+- In scientific publications, cite everyone
 """
         ,Html.h3 [] [Html.text "Acknowledgements"]
         ,HS.textUL
@@ -225,6 +275,17 @@ summary =
                     HtmlAttr.style "padding-top" "50vh"
                     ,HtmlAttr.style "padding-left" "50%"
                     ,HtmlAttr.style "font-size" "64px"] [Html.text "Thank you"]]
+     , slideType = Slides.Follower }
+    ,RawSlide <| { content =
+            Html.div [HtmlAttr.class "slide"]
+                [Html.h2 [
+                    HtmlAttr.style "padding-top" "50vh"
+                    ,HtmlAttr.style "padding-left" "50%"
+                    ,HtmlAttr.style "font-size" "64px"] [Html.text "Thank you"]
+                    ,HS.mdToHtml """
+Feel free to follow up on Twitter (@luispedrocoelho) or Email (luis@luispedro.org) or join my **open office hours on Thursday**: [https://bit.ly/2022-10-27-lpc-office-hours] (https://bit.ly/2022-10-27-lpc-office-hours)
+                    """
+                ]
      , slideType = Slides.Follower }
     ]
 

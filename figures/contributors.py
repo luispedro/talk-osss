@@ -15,6 +15,8 @@ NORM_NAMES = {
         'Celio Santos-Jr': 'celiosantosjr',
         'Celio Santos': 'celiosantosjr',
         'Hiram He': 'HiramHe',
+        'Doug Hyatt': 'hyattpd',
+
         }
 
 @TaskGenerator
@@ -49,6 +51,7 @@ REPOS = [
     'SemiBin',
     'mahotas',
     'ngless',
+    'Prodigal',
     ]
 
 results = {}

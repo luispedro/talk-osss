@@ -37,7 +37,7 @@ let
     };
 
 in mkDerivation {
-  name = "lpc-slides";
+  name = "oss-science-slides";
   srcs = ./elm-srcs.nix;
   src = builtins.filterSource
             (path: _type: baseNameOf path != ".git" && baseNameOf path != "result")

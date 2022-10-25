@@ -1,5 +1,5 @@
 {
-  description = "LPC presentation";
+  description = "Open source software in science presentation";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/3d6636ba27ca348f3f110d8fa6c9d7ae1fce648a";
   outputs = { self, nixpkgs }:
   let system = "x86_64-linux";

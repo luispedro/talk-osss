@@ -287,8 +287,6 @@ footer model =
                 ,Html.text metadata.shortTitle
                 ,Html.text " ["
                 ,Html.text (String.fromInt cur)
-                ,Html.text "/"
-                ,Html.text (String.fromInt total)
                 ,Html.text "]"
                 ]
             ]

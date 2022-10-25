@@ -199,7 +199,9 @@ In total, 10 minutes × 10,000 runs is ~70 days.
 casestudy =
     [mkIncrementalSlide "Case study II: NGLess"
         [[HS.img50 "/Media/BDB-Lab_tools_timeline.svg"]
-        ,[HS.mdToHtml """
+        ,[
+            HS.floatRightDiv "60%" [HS.img80 "/Media/NGLess/NGLess-code-example_small.png"]
+            ,HS.mdToHtml """
 ### Focus on NGLess
 
 Tool to analyze NGS data (e.g. metagenomics) in a reproducible way<br/>
@@ -233,14 +235,15 @@ Tool to analyze NGS data (e.g. metagenomics) in a reproducible way<br/>
         ]
     ,mkIncrementalSlide "Case study III: Jug"
         [[HS.img50 "/Media/BDB-Lab_tools_timeline.svg"]
-        ,[HS.mdToHtml """
+        ,[HS.floatRightDiv "60%" [Html.img [HtmlAttr.src "/Media/Jug/jug-example-short.png"] []]
+        , HS.mdToHtml """
 ### Focus on Jug
 
 - Tool to run workflows in Python
 - Scratch an itch tool
 - Not particularly successful at attracting users/contributors
 - Still very successful at solving my problems
-
+"""],[ HS.mdToHtml """
 ### A couple of derived tools
 
 - [Gridjug](https://github.com/andsor/gridjug)
@@ -250,18 +253,37 @@ In an ecosystem, it is hard to tell what is a contribution to any project.
 Contribute _to the ecosystem_!
 
 """] ]
+    ,mkIncrementalSlide "Software ecosystems enable working together apart"
+    [[Html.h3 [] [Html.text "Old model: projects are self contained"]
+     ,HS.floatRightDiv "20%" [HS.img80 "/Media/luispedro_a_computer_programmer_working_a_glass_bubble_in_pop_a_fa431846-0359-478b-9482-485a3c5b403b.png"]
+     ,HS.mdToHtml """
+- Others are competitors (scooping is a risk)
+- No sharing of data, code, ... without a contract!
+"""]
+    ,[Html.h3 [HtmlAttr.style "padding-top" "2em"] [Html.text "Utopia: everyone works together in a flat hierarchy"]
+     ,HS.mdToHtml """
+- Share everything
+- It does not matter where you are (geographically, hierarchically, disciplinarily, ...)
+- Credit doesn't matter
+"""]
+
+    ,[Html.h3 [HtmlAttr.style "padding-top" "2em"] [Html.text "Ecosystems reality: projects are independent but part of larger ecosystems"]
+     ,HS.floatRightDiv "20%" [HS.img80 "/Media/luispedro_many_programmers_working_together_in_a_scientific_pro_a645b24d-9a50-4aac-ac96-8ba1b692cf93.png"]
+     ,HS.mdToHtml """
+- Collaborate with other in multiscale ways: closely work with small number of people; loosely collaborate across the world
+- Credit where credit is due
+"""]]
     ]
 
 summary =
     [mkSlide "Summary: think of yourself as part of a community"
         [HS.mdToHtml """
-- Most projects are small projects
-- Most collaboration is within small teams (that may know each other IRL)
+- Multiscale collaboration (tight within small team, but still collaborating with everyone)
 - Think about what is _worthwhile for your project_
 - Accept small contributions
 - Make small contributions
 - Not all contributions need to be code commits
-- In scientific publications, cite everyone
+- Credit where credit is due (_e.g._, in scientific publications, cite everyone)
 """
         ,Html.h3 [] [Html.text "Acknowledgements"]
         ,HS.textUL

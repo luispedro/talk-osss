@@ -305,7 +305,7 @@ summary =
                     ,HtmlAttr.style "padding-left" "50%"
                     ,HtmlAttr.style "font-size" "64px"] [Html.text "Thank you"]
                     ,HS.mdToHtml """
-Feel free to follow up on Twitter (@luispedrocoelho) or Email (luis@luispedro.org) or join my **open office hours on Thursday**: [https://bit.ly/2022-10-27-lpc-office-hours] (https://bit.ly/2022-10-27-lpc-office-hours)
+Feel free to follow up on Twitter (@luispedrocoelho) or Email (luis@luispedro.org) or join my **open office hours on Thursday**: [https://bit.ly/2022-10-27-lpc-office-hours](https://bit.ly/2022-10-27-lpc-office-hours)
                     """
                 ]
      , slideType = Slides.Follower }
